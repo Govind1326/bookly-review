@@ -16,7 +16,7 @@
             <div class="container-fluid shadow-lg header">
                 <div class="container">
                     <div class="d-flex justify-content-between">
-                        <h2 class="text-center"><a href="/" class="h3 text-white text-decoration-none">Book Review App</a></h3>
+                        <h2 class="text-center"><a href="/" class="h3 text-white text-decoration-none">Book Review</a></h3>
                         <div class="d-flex align-items-center navigation">
                             @php $path = request()->path(); @endphp
                             @if(!Auth::user())
