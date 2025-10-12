@@ -12,8 +12,7 @@ Route::middleware(['activity-log'])->group(function () {
     Route::post('/', [HomeController::class, 'index'])->name('home.bookfind');
     Route::get('/bookdetail/{id}', [HomeController::class, 'detail'])->name('book.bookdetail');
     Route::post('savereview', [BookController::class, 'saveReview'])->name('books.saveReview');
-    Route::resource('activity-logs',ActivityLogController::class);
-
+    
     Route::group(['prefix' => 'account'], function () {
         Route::group(['middleware' => 'guest'], function () {
             Route::get('register', [AccountController::class, 'register'])->name('account.register');
@@ -25,14 +24,15 @@ Route::middleware(['activity-log'])->group(function () {
             Route::post('resetpassword', [AccountController::class, 'resetPassword'])->name('account.resetpassword');
         });
         Route::group(['middleware' => 'auth'], function () {
-
+            
             Route::get('profile', [AccountController::class, 'profile'])->name('account.profile');
             Route::post('profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
             Route::get('logout', [AccountController::class, 'logout'])->name('account.logout');
             Route::get('changepassword', [AccountController::class, 'passwordPage'])->name('account.passwordPage');
             Route::post('changepassword', [AccountController::class, 'changepassword'])->name('account.changePassword');
-
+            
             Route::group(['middleware' => 'check-admin'], function () {
+                Route::resource('activity-logs',ActivityLogController::class);
                 Route::get('users', [AccountController::class, 'users'])->name('account.users');
                 Route::post('users', [AccountController::class, 'update'])->name('user.update');
                 Route::delete('users', [AccountController::class, 'delete'])->name('user.delete');
