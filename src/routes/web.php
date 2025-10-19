@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['activity-log'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::post('/', [HomeController::class, 'index'])->name('home.bookfind');
-    Route::get('/bookdetail/{id}', [HomeController::class, 'detail'])->name('book.bookdetail');
+    Route::get('/{slug}', [HomeController::class, 'detail'])->name('book.bookdetail');
     Route::post('savereview', [BookController::class, 'saveReview'])->name('books.saveReview');
     
     Route::group(['prefix' => 'account'], function () {

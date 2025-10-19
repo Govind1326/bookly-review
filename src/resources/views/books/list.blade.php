@@ -29,7 +29,7 @@ Book List
                                     @if($books->isNotEmpty())
                                     @foreach ($books as $book )
                                     <tr>
-                                        <td><a style="text-decoration:none" href="{{route('book.bookdetail',['id'=>$book->id])}}">{{$book->title}}</a></td>
+                                        <td><a style="text-decoration:none" href="{{route('book.bookdetail',['slug'=>$book->slug])}}">{{$book->title}}</a></td>
                                         <td>{{$book->author}}</td>
                                         <td>{{$book->reviews_avg_rating==0?'-':number_format($book->reviews_avg_rating, 1)}}</td>
                                         <td class="{{$book->status?'text-success':'text-danger'}}">{{$book->status?'Active':'Inactive'}}</td>
