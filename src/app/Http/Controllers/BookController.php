@@ -7,6 +7,7 @@ use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
@@ -45,9 +46,13 @@ class BookController extends Controller
             }
         }
         $book->title = $req->title;
+        $book->slug = Str::slug($req->title);
         $book->author = $req->author;
         $book->description = $req->description;
         $book->status = $req->status;
+        $book->meta_title = $req->meta_title;
+        $book->meta_description = $req->meta_description;
+        $book->meta_keyword = $req->meta_keyword;
         if ($req->hasFile('image')) {
             // Optionally, delete the old image
             if (!empty($book->image) && file_exists(public_path($book->image))) {
