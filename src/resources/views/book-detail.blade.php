@@ -2,6 +2,12 @@
 @section('title')
 Book Detail
 @endsection
+@section('meta')
+    <meta name="title" content="{{ $book->meta_title }}">
+    <meta name="description" content="{{ Str::limit($book->meta_description, 160) }}">
+    <meta name="keywords" content="{{$book->meta_keyword }}">
+@endsection
+
 @section('main')
     <div class="container mt-3 ">
         <div class="row justify-content-center d-flex mt-5">
@@ -58,7 +64,7 @@ Book Detail
                             </div>
                             @foreach ($relatedBooks as $Rbook )
                             <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
-                                <a  style="text-decoration: none" href="{{route('book.bookdetail',$Rbook->id)}}">                                
+                                <a  style="text-decoration: none" href="{{route('book.bookdetail',$Rbook->slug)}}">                                
                                 <div class="card border-0 shadow-lg">
                                     <img src="../{{$Rbook->image}}" alt="" class="card-book-suggest">
                                     <div class="card-body">
