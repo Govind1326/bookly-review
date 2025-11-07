@@ -20,7 +20,6 @@ return new class extends Migration
             $table->enum('role',['admin','user'])->default('user');
             $table->integer('deleted')->default(0);
             $table->rememberToken();
-            $table->string('last_login');
             $table->timestamps();
         });
 
